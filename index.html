@@ -49,12 +49,15 @@
   const network = new vis.Network(container, data, options);
 
   // Make nodes clickable
-  network.on("click", function (params) {
-    const node = nodes.get(params.nodes[0]);
-    if (node && node.url) {
-      window.location.href = node.url;
+network.on("click", function (params) {
+  if (params.nodes.length > 0) {
+    const clickedNodeId = params.nodes[0];
+    const nodeData = nodes.get(clickedNodeId);
+    if (nodeData && nodeData.url) {
+      window.location.href = nodeData.url;
     }
-  });
+  }
+});
 </script>
 </body>
 </html>

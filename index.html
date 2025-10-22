@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Constitutional Law Map</title>
+  <script type="text/javascript" src="https://unpkg.com/vis-network/standalone/umd/vis-network.min.js"></script>
+  <style>
+    body { font-family: Arial, sans-serif; text-align: center; }
+    #mynetwork {
+      width: 100%;
+      height: 90vh;
+      border: 1px solid lightgray;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Constitutional Law Interactive Map</h1>
+  <div id="mynetwork"></div>
+
+  <script>
+    const nodes = new vis.DataSet([
+      { id: 1, label: "Justiciability", shape: "circle" },
+      { id: 2, label: "Standing" },
+      { id: 3, label: "Mootness" },
+      { id: 4, label: "Ripeness" },
+      { id: 5, label: "Political Question Doctrine" }
+    ]);
+
+    const edges = new vis.DataSet([
+      { from: 1, to: 2 },
+      { from: 1, to: 3 },
+      { from: 1, to: 4 },
+      { from: 1, to: 5 }
+    ]);
+
+    const container = document.getElementById("mynetwork");
+    const data = { nodes, edges };
+    const options = {
+      nodes: { color: { background: "#BFD7ED", border: "#2A628F" }, font: { size: 18 } },
+      edges: { arrows: "to", color: "#888" },
+      physics: { stabilization: true }
+    };
+    new vis.Network(container, data, options);
+  </script>
+</body>
+</html>

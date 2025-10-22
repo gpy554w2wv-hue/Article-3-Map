@@ -21,18 +21,40 @@
 
   <script>
   const nodes = new vis.DataSet([
+    // --- Justiciability and subtopics ---
     { id: 1, label: "Justiciability", shape: "circle", title: "Doctrine about when courts may hear a case" },
-    { id: 2, label: "Standing", title: "Whether the plaintiff has a sufficient stake" , url: "cases/standing.html"},
+    { id: 2, label: "Standing", title: "Whether the plaintiff has a sufficient stake", url: "cases/standing.html" },
     { id: 3, label: "Mootness", title: "Whether the dispute remains live", url: "cases/mootness.html" },
     { id: 4, label: "Ripeness", title: "Whether the issue is ready for review", url: "cases/ripeness.html" },
-    { id: 5, label: "PQD", title: "Political Question Doctrine: nonjusticiable issues", url: "cases/pqd.html" }
+    { id: 5, label: "PQD", title: "Political Question Doctrine: nonjusticiable issues", url: "cases/pqd.html" },
+
+    // --- Separation of Powers ---
+    { id: 10, label: "Separation of Powers", shape: "circle", title: "Allocation of authority among branches" },
+    { id: 11, label: "Youngstown", title: "Limits on presidential power (Steel Seizure Case)", url: "cases/youngstown.html" },
+    { id: 12, label: "Morrison v. Olson", title: "Independent counsel statute upheld", url: "cases/morrison.html" },
+    { id: 13, label: "Seila Law v. CFPB", title: "Limits on removal protections", url: "cases/seila.html" },
+
+    // --- Federalism ---
+    { id: 20, label: "Federalism", shape: "circle", title: "Balance between federal and state power" },
+    { id: 21, label: "McCulloch v. Maryland", title: "Federal power and implied powers doctrine", url: "cases/mcculloch.html" },
+    { id: 22, label: "Gibbons v. Ogden", title: "Commerce Clause and interstate regulation", url: "cases/gibbons.html" },
+    { id: 23, label: "Printz v. United States", title: "Anti-commandeering principle", url: "cases/printz.html" }
   ]);
 
   const edges = new vis.DataSet([
+    // Justiciability links
     { from: 1, to: 2 },
     { from: 1, to: 3 },
     { from: 1, to: 4 },
-    { from: 1, to: 5 }
+    { from: 1, to: 5 },
+    // Separation of Powers links
+    { from: 10, to: 11 },
+    { from: 10, to: 12 },
+    { from: 10, to: 13 },
+    // Federalism links
+    { from: 20, to: 21 },
+    { from: 20, to: 22 },
+    { from: 20, to: 23 }
   ]);
 
   const container = document.getElementById("mynetwork");
@@ -46,18 +68,18 @@
     physics: { stabilization: true },
     interaction: { hover: true }
   };
+
   const network = new vis.Network(container, data, options);
 
-  // Make nodes clickable
-network.on("click", function (params) {
-  if (params.nodes.length > 0) {
-    const clickedNodeId = params.nodes[0];
-    const nodeData = nodes.get(clickedNodeId);
-    if (nodeData && nodeData.url) {
-      window.location.href = nodeData.url;
+  // Click handler for navigation
+  network.on("click", function (params) {
+    if (params.nodes.length > 0) {
+      const nodeData = nodes.get(params.nodes[0]);
+      if (nodeData && nodeData.url) {
+        window.location.href = nodeData.url;
+      }
     }
-  }
-});
+  });
 </script>
 </body>
 </html>

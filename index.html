@@ -20,29 +20,41 @@
   <div id="mynetwork"></div>
 
   <script>
-    const nodes = new vis.DataSet([
-      { id: 1, label: "Justiciability", shape: "circle" },
-      { id: 2, label: "Standing" },
-      { id: 3, label: "Mootness" },
-      { id: 4, label: "Ripeness" },
-      { id: 5, label: "Political Question Doctrine" }
-    ]);
+  const nodes = new vis.DataSet([
+    { id: 1, label: "Justiciability", shape: "circle", title: "Doctrine about when courts may hear a case" },
+    { id: 2, label: "Standing", title: "Whether the plaintiff has a sufficient stake" , url: "cases/standing.html"},
+    { id: 3, label: "Mootness", title: "Whether the dispute remains live", url: "cases/mootness.html" },
+    { id: 4, label: "Ripeness", title: "Whether the issue is ready for review", url: "cases/ripeness.html" },
+    { id: 5, label: "PQD", title: "Political Question Doctrine: nonjusticiable issues", url: "cases/pqd.html" }
+  ]);
 
-    const edges = new vis.DataSet([
-      { from: 1, to: 2 },
-      { from: 1, to: 3 },
-      { from: 1, to: 4 },
-      { from: 1, to: 5 }
-    ]);
+  const edges = new vis.DataSet([
+    { from: 1, to: 2 },
+    { from: 1, to: 3 },
+    { from: 1, to: 4 },
+    { from: 1, to: 5 }
+  ]);
 
-    const container = document.getElementById("mynetwork");
-    const data = { nodes, edges };
-    const options = {
-      nodes: { color: { background: "#BFD7ED", border: "#2A628F" }, font: { size: 18 } },
-      edges: { arrows: "to", color: "#888" },
-      physics: { stabilization: true }
-    };
-    new vis.Network(container, data, options);
-  </script>
+  const container = document.getElementById("mynetwork");
+  const data = { nodes, edges };
+  const options = {
+    nodes: {
+      color: { background: "#BFD7ED", border: "#2A628F" },
+      font: { size: 18 },
+    },
+    edges: { arrows: "to", color: "#888" },
+    physics: { stabilization: true },
+    interaction: { hover: true }
+  };
+  const network = new vis.Network(container, data, options);
+
+  // Make nodes clickable
+  network.on("click", function (params) {
+    const node = nodes.get(params.nodes[0]);
+    if (node && node.url) {
+      window.location.href = node.url;
+    }
+  });
+</script>
 </body>
 </html>

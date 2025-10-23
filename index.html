@@ -25,24 +25,37 @@
     const response = await fetch("data/map.json");
     const mapData = await response.json();
 
+    // Lock positions for nodes with explicit coordinates
+    mapData.nodes.forEach(node => {
+      if (node.x !== undefined && node.y !== undefined) {
+        node.fixed = { x: true, y: true };
+      }
+    });
+
+    // Create the vis.js DataSets
     const nodes = new vis.DataSet(mapData.nodes);
     const edges = new vis.DataSet(mapData.edges);
 
+    // Define the container and layout options
     const container = document.getElementById("mynetwork");
     const data = { nodes, edges };
     const options = {
       nodes: {
         color: { background: "#BFD7ED", border: "#2A628F" },
-        font: { size: 18 },
+        font: { size: 18 }
       },
       edges: { arrows: "to", color: "#888" },
-      physics: { stabilization: true },
+      physics: {
+        stabilization: true,
+        barnesHut: { gravitationalConstant: -3000 }
+      },
       interaction: { hover: true }
     };
 
+    // Initialize the network visualization
     const network = new vis.Network(container, data, options);
 
-    // Handle clicks
+    // Handle clicks (open linked pages)
     network.on("click", function (params) {
       if (params.nodes.length > 0) {
         const nodeData = nodes.get(params.nodes[0]);
@@ -55,5 +68,6 @@
 
   initMap();
 </script>
+
 </body>
 </html>

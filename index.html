@@ -54,16 +54,7 @@
 
     // Initialize the network visualization
     const network = new vis.Network(container, data, options);
-network.once("stabilized", function () {
-  const positions = network.getPositions([1, 10, 20]); // your main topic IDs
-  Object.keys(positions).forEach(id => {
-    const node = nodes.get(id);
-    node.x = positions[id].x;
-    node.y = 0; // force same horizontal line
-    node.fixed = { x: true, y: true };
-    nodes.update(node);
-  });
-});
+
     // Handle clicks (open linked pages)
     network.on("click", function (params) {
       if (params.nodes.length > 0) {

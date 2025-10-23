@@ -1,17 +1,17 @@
 {
   "nodes": [
-    { "id": 1, "label": "Justiciability", "shape": "circle", "title": "Doctrine about when courts may hear a case", "x": -300, "y": 0 },
+    { "id": 1, "label": "Justiciability", "shape": "circle", "title": "Doctrine about when courts may hear a case", "x": -350, "y": -50 },
     { "id": 2, "label": "Standing", "title": "Whether the plaintiff has a sufficient stake", "url": "cases/standing.html" },
     { "id": 3, "label": "Mootness", "title": "Whether the dispute remains live", "url": "cases/mootness.html" },
     { "id": 4, "label": "Ripeness", "title": "Whether the issue is ready for review", "url": "cases/ripeness.html" },
     { "id": 5, "label": "PQD", "title": "Political Question Doctrine: nonjusticiable issues", "url": "cases/pqd.html" },
 
-    { "id": 10, "label": "Separation of Powers", "shape": "circle", "title": "Allocation of authority among branches", "x": 0, "y": -200 },
+    { "id": 10, "label": "Separation of Powers", "shape": "circle", "title": "Allocation of authority among branches", "x": -250, "y": -50 },
     { "id": 11, "label": "Youngstown", "title": "Limits on presidential power (Steel Seizure Case)", "url": "cases/youngstown.html" },
     { "id": 12, "label": "Morrison v. Olson", "title": "Independent counsel statute upheld", "url": "cases/morrison.html" },
     { "id": 13, "label": "Seila Law v. CFPB", "title": "Limits on removal protections", "url": "cases/seila.html" },
 
-    { "id": 20, "label": "Federalism", "shape": "circle", "title": "Balance between federal and state power", "x": 300, "y": 0 },
+    { "id": 20, "label": "Federalism", "shape": "circle", "title": "Balance between federal and state power", "x": -150, "y": -50 },
     { "id": 21, "label": "McCulloch v. Maryland", "title": "Federal power and implied powers doctrine", "url": "cases/mcculloch.html" },
     { "id": 22, "label": "Gibbons v. Ogden", "title": "Commerce Clause and interstate regulation", "url": "cases/gibbons.html" },
     { "id": 23, "label": "Printz v. United States", "title": "Anti-commandeering principle", "url": "cases/printz.html" }

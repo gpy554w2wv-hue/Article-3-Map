@@ -19,10 +19,10 @@
   <h1>Constitutional Law Interactive Map</h1>
   <div id="mynetwork"></div>
 
- <script>
+<script>
   async function initMap() {
     // Load map data from the JSON file
-    const response = await fetch("data/map.json");
+    const response = await fetch("./data/map.json");
     const mapData = await response.json();
 
     // Lock positions for nodes with explicit coordinates
@@ -40,16 +40,15 @@
     const container = document.getElementById("mynetwork");
     const data = { nodes, edges };
     const options = {
-  nodes: {
-    color: { background: "#BFD7ED", border: "#2A628F" },
-    font: { size: 18 },
-    size: 25   // ✅ note: there *is* a comma after font, none after size (last property)
-  },
-  edges: { arrows: "to", color: "#888" },
-  physics: false,
-  interaction: { hover: true }
-};
-
+      nodes: {
+        color: { background: "#BFD7ED", border: "#2A628F" },
+        font: { size: 18 },
+        size: 25
+      },
+      edges: { arrows: "to", color: "#888" },
+      physics: false,
+      interaction: { hover: true }
+    };
 
     // Initialize the network visualization
     const network = new vis.Network(container, data, options);
@@ -67,6 +66,7 @@
 
   initMap();
 </script>
+
 
 </body>
 </html>

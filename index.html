@@ -40,15 +40,16 @@
     const container = document.getElementById("mynetwork");
     const data = { nodes, edges };
     const options = {
-      nodes: {
-        color: { background: "#BFD7ED", border: "#2A628F" },
-        font: { size: 18 }
-      },
-      edges: { arrows: "to", color: "#888" },
-      physics: false,
+  nodes: {
+    color: { background: "#BFD7ED", border: "#2A628F" },
+    font: { size: 18 },
+    size: 25   // ✅ note: there *is* a comma after font, none after size (last property)
+  },
+  edges: { arrows: "to", color: "#888" },
+  physics: false,
+  interaction: { hover: true }
+};
 
-      interaction: { hover: true }
-    };
 
     // Initialize the network visualization
     const network = new vis.Network(container, data, options);
